@@ -1,6 +1,8 @@
 function sum2DArray(arr) {
     return new Promise((resolve, reject) => {
         console.log('Sum called ... ');
+        //console.log(arr);
+        //console.log(Array.isArray(arr));
         if(Array.isArray(arr)) {
             setTimeout(() => {
                 let sum = 0;
@@ -29,7 +31,16 @@ const array2D = [
 ];
 
 const sumPromise1 = sum2DArray(array2D);
-console.log(sumPromise1);
+sumPromise1.then((res) => console.log(res))
+    .catch((err) => console.log(err));
 
+//We can also move the computation to the then block and remove the setTimeout()
+//console.log(sumPromise1);
+
+/*
 const sumPromise2 = sum2DArray('array2D');
-console.log(sumPromise2);
+sumPromise2.then((res) => console.log(res))
+    .catch((err) => console.log(err));
+
+ */
+//console.log(sumPromise2);

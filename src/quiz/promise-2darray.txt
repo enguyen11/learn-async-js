@@ -1,1 +1,4 @@
 Explain the code execution based on the order of the messages logged in src/quiz/promise-2darray.txt.
+
+The second sumPromise resolves before the first because the second one is rejected immediately. It is giving us an
+UnhandledPromiseRejection because we are just consoling the promise and not handling it (ie. with then/catch/throw).
