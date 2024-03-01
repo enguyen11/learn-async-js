@@ -9,24 +9,34 @@ const aliceTumbling = [
     fill: 'forwards'
   }
   
-  const alice1 = document.querySelector("#alice1");
-  const alice2 = document.querySelector("#alice2");
-  const alice3 = document.querySelector("#alice3");
 
-  alice1
-    .animate(aliceTumbling, aliceTiming)
-    .finished
-    .then((res) => {
-        console.log(res);
-        alice2
-            .animate(aliceTumbling, aliceTiming)
-            .finished
-            .then((res) => {
-                console.log(res);
-                alice3.animate(aliceTumbling, aliceTiming);
-            })
-    });
+  async function main(){
+      try {
+          const alice1 = document.querySelector("#alice1");
+          const alice2 = document.querySelector("#alice2");
+          const alice3 = document.querySelector("#alice3");
+          await aliceAnimation(alice1);
+          await aliceAnimation(alice2);
+          await aliceAnimation(alice3);
 
+          //console.log(productName);
+      }
+      catch(err) {
+          console.log(`Failure: ${err.message}`);
+      }
+  }
+    main();
+    console.log('End main thread');
+
+
+  async function aliceAnimation(alice){
+      try {
+          await alice.animate(aliceTumbling, aliceTiming).finished;
+      }
+      catch (err) {
+          console.log(`Error when animating: ${err.message}`)
+      }
+  }
   // Promise chain  
   // alice1.animate(aliceTumbling, aliceTiming).finished  
   //   .then(() => {

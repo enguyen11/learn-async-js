@@ -13,14 +13,18 @@ async function fetchProducts() {
     // the `response.json()` call will either return the parsed JSON object or throw an error
     const data = await response.json();
     console.log('response created');
-    return data[0].name;
+    //Messing around to retrieve all the entries
+    for (const datum of data) {
+        console.log(datum.name);
+    }
+    return;
   }
   
   async function main() {
     console.log('Begin main ... ')
     try {
         const productName = await fetchProducts();
-        console.log(productName);
+        //console.log(productName);
     }
     catch(err) {
         console.log(`Failure: ${err.message}`);
